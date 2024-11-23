@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const projects = [
         { name: "핑구OS", description: "사용자 중심의 맞춤형 운영체제 프로젝트." },
         { name: "개발자를 빡치게 하는 방법", description: "개발자들을 유쾌하게 화나게 하는 노하우를 공유하는 프로젝트." },
-        { name: "오늘 뭐 먹지?", description: "점심 메뉴를 추천해주는 디스코드 봇 프로젝트." }
+        { name: "오늘 뭐 먹지?", description: "점심 메뉴를 추천해주는 프로젝트." }
     ];
 
     // 소개 렌더링
