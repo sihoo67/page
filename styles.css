@@ -1,139 +1,55 @@
-/* Global Styles */
-* {
+/* General Vim-like styling */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    background-color: black;
+    font-family: monospace;
+    overflow: hidden; /* For fullscreen 3D */
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle, #2e2e2e, #1a1a1a);
-    color: #fff;
-    overflow-x: hidden;
+/* 3D Container */
+#webgl-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
-/* Header */
-.header {
-    background: linear-gradient(to right, #ff7eb3, #ff758c);
-    padding: 3rem 1rem;
-    text-align: center;
-    border-bottom: 5px solid #ff003c;
-    animation: fadeIn 2s ease-out;
+/* Vim-like UI */
+.vim-container {
+    position: relative;
+    color: #dcdcdc;
+    padding: 2rem;
 }
 
-.logo {
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px #ff003c;
-    animation: glow 2s infinite alternate;
-}
-
-.tagline {
+.vim-header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem;
+    color: #00ff00;
     font-size: 1.2rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #3a3a3a;
 }
 
-/* Navigation */
-.nav {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
+.vim-content {
+    margin-top: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    border: 1px solid #3a3a3a;
+    color: #dcdcdc;
 }
 
-.nav button {
-    background: #1a1a1a;
-    border: 2px solid #ff758c;
-    margin: 0 1rem;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: #ff758c;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-}
-
-.nav button:hover {
-    transform: scale(1.1);
-    background: #ff758c;
-    color: #fff;
-    box-shadow: 0 0 15px #ff003c, 0 0 30px #ff758c;
-}
-
-/* Main Content */
-.content {
-    text-align: center;
-    padding: 3rem 2rem;
-    min-height: 60vh;
-    animation: slideIn 1s ease-out;
-}
-
-.content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    color: #ff9a9e;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.content p, .content ul {
-    font-size: 1.2rem;
-    line-height: 2;
-}
-
-.content ul li {
-    margin-bottom: 1rem;
-    list-style: none;
-    background: rgba(255, 117, 140, 0.2);
-    padding: 0.8rem 1rem;
-    border-radius: 15px;
-}
-
-.content a {
-    color: #ffe53b;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.content a:hover {
-    color: #ff8c00;
+.highlight {
+    color: #ffcc00;
 }
 
 /* Footer */
-.footer {
+.vim-footer {
     text-align: center;
-    padding: 1rem 0;
-    background: #1a1a1a;
-    border-top: 5px solid #ff003c;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px #ff758c, 0 0 20px #ff003c;
-    }
-    to {
-        text-shadow: 0 0 20px #ff758c, 0 0 30px #ff003c;
-    }
+    color: #00ff00;
+    margin-top: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 0.5rem;
+    border-top: 1px solid #3a3a3a;
 }
