@@ -1,53 +1,69 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Selectors
     const content = document.getElementById("content");
 
-    // 프로젝트 데이터
+    // 3D Scene Setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById("webgl-container").appendChild(renderer.domElement);
+
+    // Add rotating cube
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+    camera.position.z = 5;
+
+    function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    // Page content
     const projects = [
         { name: "핑구OS", description: "사용자 중심의 맞춤형 운영체제 프로젝트." },
         { name: "개발자를 빡치게 하는 방법", description: "개발자들을 유쾌하게 화나게 하는 노하우를 공유하는 프로젝트." },
-        { name: "오늘 뭐 먹지?", description: "점심 메뉴를 추천해주는 프로젝트." }
+        { name: "오늘 뭐 먹지?", description: "점심 메뉴를 추천해주는 프로젝트." },
     ];
 
-    // 소개 렌더링
     function showAbout() {
         content.innerHTML = `
-            <h2>소개</h2>
-            <p>안녕하세요! 저는 <strong>핑구</strong>입니다. 깃허브에서 <a href="https://github.com/sihoo67" target="_blank">sihoo67</a>으로 활동하고 있으며, 개발자 커뮤니티에 기여하는 것을 좋아합니다.</p>
-            <p>대표적인 프로젝트는 핑구OS, 개발자를 빡치게 하는 방법, 오늘 뭐 먹지? 등이 있습니다. 😊</p>
+            === About ===
+            Welcome to the universe of 핑구!
+            GitHub: sihoo67
+            Explore projects like 핑구OS, 개발자를 빡치게 하는 방법, and 오늘 뭐 먹지!
         `;
     }
 
-    // 프로젝트 렌더링
     function showProjects() {
+        const projectList = projects
+            .map((project) => `- ${project.name}: ${project.description}`)
+            .join("\n");
         content.innerHTML = `
-            <h2>프로젝트</h2>
-            <ul>
-                ${projects
-                  .map(
-                    (project) =>
-                      `<li><strong>${project.name}</strong>: ${project.description}</li>`
-                  )
-                  .join("")}
-            </ul>
+            === Projects ===
+            ${projectList}
         `;
     }
 
-    // 연락처 렌더링
     function showContact() {
         content.innerHTML = `
-            <h2>연락처</h2>
-            <p>GitHub: <a href="https://github.com/sihoo67" target="_blank">sihoo67</a></p>
-            <p>Discord: ping.__.9</p>
-            <p>Thread: wsid_hyun</p>
-            <p>Email: ping9@ping9.shop</p>
+            === Contact ===
+            GitHub: https://github.com/sihoo67
+            Discord: ping.__.9
+            Email: ping9@ping9.shop
         `;
     }
 
-    // 초기 화면
+    // Key navigation
     showAbout();
-
-    // 글로벌 함수 등록
-    window.showAbout = showAbout;
-    window.showProjects = showProjects;
-    window.showContact = showContact;
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "a") showAbout();
+        if (e.key === "p") showProjects();
+        if (e.key === "c") showContact();
+    });
 });
